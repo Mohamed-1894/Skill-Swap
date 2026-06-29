@@ -1,0 +1,813 @@
+using SkillSwap.Models;
+
+namespace SkillSwap.Data
+{
+    public class AppDbInitializer
+    {
+        public static void Seed(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+                context.Database.EnsureCreated();
+                if (!context.Category.Any())
+                {
+                    context.Category.AddRange(new List<Category>()
+                    {
+                        new Category()
+                        {
+                            Name = "Programming",
+                            Description = "Learn and teach programming languages, " +
+                            "software development, databases, " +
+                            "web development, and mobile application development."
+                        },
+                        new Category()
+                        {
+                            Name = "Design",
+                            Description = "Exchange skills related to graphic design, " +
+                            "UI/UX, branding, " +
+                            "illustration, animation, and creative tools.."
+                        },
+                        new Category()
+                        {
+                            Name = "Languages",
+                            Description = "Improve speaking, writing, reading, " +
+                            "and listening skills in different languages through interactive sessions"
+                        },
+                        new Category()
+                        {
+                            Name = "Business",
+                            Description = "Learn entrepreneurship, project management, marketing, " +
+                            "finance, accounting, and business strategy"
+                        },
+                        new Category()
+                        {
+                            Name = "Music & Arts",
+                            Description = "Learn musical instruments, singing, painting, " +
+                            "photography, video editing, and other creative arts."
+                        },
+                        new Category()
+                        {
+                            Name = "Fitness and Health",
+                            Description = "Offer or request guidance on fitness, nutrition, yoga, " +
+                            "mental wellness, and healthy lifestyle habits."
+                        }
+                    });
+                    context.SaveChanges();
+                }
+
+                if (!context.Skills.Any())
+                {
+                    context.Skills.AddRange(new List<Skills>()
+                    {
+                        new Skills()
+                        {
+                            Name = "C#",
+                            Description = "Learn object-oriented programming, data structures, and " +
+                            "application development using C#.",
+                            CategoyId = 1
+
+                        },
+                        new Skills()
+                        {
+                            Name = "SQL Server",
+                            Description = "Learn database design, SQL queries, stored procedures, " +
+                            "and database management using SQL Server.",
+                            CategoyId = 1
+                        },
+                        new Skills()
+                        {
+                            Name = "HTML & CSS",
+                            Description = "Learn database design, SQL queries, stored procedures, " +
+                            "and database management using SQL Server.",
+                            CategoyId = 1
+                        },
+                        new Skills()
+                        {
+                            Name = "Adobe Illustrator",
+                            Description = "Create vector graphics, logos, icons, and " +
+                            "illustrations for digital and print media.",
+                            CategoyId = 2
+                        },
+                        new Skills()
+                        {
+                            Name = "Figma",
+                            Description = "Design user interfaces, wireframes, " +
+                            "and interactive prototypes for websites and mobile applications.",
+                            CategoyId = 2
+                        },
+                        new Skills()
+                        {
+                            Name = "Adobe Photoshop",
+                            Description = "Edit images, create digital artwork, and " +
+                            "design professional marketing materials.",
+                            CategoyId = 2
+                        },
+                        new Skills()
+                        {
+                            Name = "English Conversation",
+                            Description = "Improve speaking, listening, pronunciation, and " +
+                            "everyday communication skills in English.",
+                            CategoyId = 3
+                        },
+                        new Skills()
+                        {
+                            Name = "Arabic for Beginners",
+                            Description = "Learn basic Arabic vocabulary, grammar, and" +
+                            " conversational skills.",
+                            CategoyId = 3
+                        },
+                        new Skills()
+                        {
+                            Name = "Project Management",
+                            Description = "Understand project planning, scheduling, teamwork, and " +
+                            "Agile methodologies.",
+                            CategoyId = 4
+                        },
+                        new Skills()
+                        {
+                            Name = "Business Analysis",
+                            Description = "Understand business requirements, process modeling, " +
+                            "stakeholder communication, and " +
+                            "solution design using industry best practices.",
+                            CategoyId = 4
+                        },
+                        new Skills()
+                        {
+                            Name = "Entrepreneurship",
+                            Description = "Learn how to validate business ideas, build a startup," +
+                            " create a business model, and launch a successful venture.",
+                            CategoyId = 4
+                        },
+                        new Skills()
+                        {
+                            Name = "Guitar",
+                            Description = "Learn guitar basics, chords, rhythm, and popular songs.",
+                            CategoyId = 5
+                        },
+                        new Skills()
+                        {
+                            Name = "Photography",
+                            Description = "Master camera settings, composition, lighting, " +
+                            "and photo editing techniques",
+                            CategoyId = 5
+                        },
+                        new Skills()
+                        {
+                            Name = "Fitness Coaching",
+                            Description = "Receive personalized guidance on workouts, strength training, " +
+                            "and healthy fitness habits",
+                            CategoyId = 6
+                        },
+                        new Skills()
+                        {
+                            Name = "Nutrition Basics",
+                            Description = "Learn healthy eating habits, meal planning, " +
+                            "and balanced nutrition principles",
+                            CategoyId = 6
+                        }
+                    });
+                    context.SaveChanges();
+                }
+                if (!context.AppUsers.Any())
+                {
+                    context.AppUsers.AddRange(new List<AppUser>()
+                    {
+                        new AppUser()
+                        {
+                            FirstName = "Ahmed",
+                            LastName = "Mohamed",
+                            Age = 25,
+                            Email = "ahmedmohamed1234@gmail.com",
+
+                        },
+                        new AppUser()
+                        {
+                            FirstName = "Aya",
+                            LastName = "Yasser",
+                            Age = 26,
+                            Email = "ayayasser123@gmail.com",
+
+                        },
+                        new AppUser()
+                        {
+                            FirstName = "Hisham",
+                            LastName = "Mohamed",
+                            Age = 29,
+                            Email = "hisham2004@gmail.com",
+
+                        },
+                        new AppUser()
+                        {
+                            FirstName = "Mohamed",
+                            LastName = "Yasser",
+                            Age = 30,
+                            Email = "mohamedyasser899@gmail.com",
+
+                        },
+                        new AppUser()
+                        {
+                            FirstName = "Jouvana",
+                            LastName = "Gerges",
+                            Age = 25,
+                            Email = "jouvana344@gmail.com",
+
+                        },
+                        new AppUser()
+                        {
+                            FirstName = "Hazem",
+                            LastName = "Nour",
+                            Age = 28,
+                            Email = "hazem2004@gmail.com",
+
+                        },
+                        new AppUser()
+                        {
+                            FirstName = "Shams",
+                            LastName = "Serag",
+                            Age = 29,
+                            Email = "shams2007@gmail.com",
+
+                        },
+                        new AppUser()
+                        {
+                            FirstName = "Hager",
+                            LastName = "Mahmoud",
+                            Age = 32,
+                            Email = "hager1222@gmail.com",
+
+                        },
+                        new AppUser()
+                        {
+                            FirstName = "Ali",
+                            LastName = "Mourad",
+                            Age = 35,
+                            Email = "alimourad444@gmail.com",
+
+                        },
+                        new AppUser()
+                        {
+                            FirstName = "Mostafa",
+                            LastName = "Yasser",
+                            Age = 25,
+                            Email = "mostafa135@gmail.com",
+
+                        }
+                    });
+                    context.SaveChanges();
+                }
+
+                if (!context.UserSkills.Any())
+                {
+                    context.UserSkills.AddRange(new List<UserSkills>()
+                    {
+                        new UserSkills()
+                        {
+                            UserId = 1,
+                            SkillId = 1,
+                            Type  = "Offered"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 2,
+                            SkillId = 1,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 1,
+                            SkillId = 2,
+                            Type  = "Offered",
+                            PricePerHour = 150
+
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 2,
+                            SkillId = 3,
+                            Type  = "Offered"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 1,
+                            SkillId = 3,
+                            Type  = "wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 3,
+                            SkillId = 2,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 3,
+                            SkillId = 3,
+                            Type  = "Offered"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 4,
+                            SkillId = 4,
+                            Type  = "Offered",
+                            PricePerHour = 250
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 4,
+                            SkillId = 3,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 4,
+                            SkillId = 6,
+                            Type  = "Offered",
+                            PricePerHour = 300
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 4,
+                            SkillId = 5,
+                            Type  = "Offered",
+                            PricePerHour = 400
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 3,
+                            SkillId = 5,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 5,
+                            SkillId = 7,
+                            Type  = "Offered",
+                            PricePerHour = 250
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 4,
+                            SkillId = 7,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 6,
+                            SkillId = 8,
+                            Type  = "Offered",
+                            PricePerHour = 250
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 5,
+                            SkillId = 8,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 7,
+                            SkillId = 9,
+                            Type  = "Offered",
+
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 7,
+                            SkillId = 10,
+                            Type  = "Offered",
+                            PricePerHour = 250
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 8,
+                            SkillId = 9,
+                            Type  = "Wanted",
+
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 8,
+                            SkillId = 10,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 8,
+                            SkillId = 11,
+                            Type  = "Offered",
+                            PricePerHour = 250
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 7,
+                            SkillId = 11,
+                            Type  = "Wanted",
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 7,
+                            SkillId = 12,
+                            Type  = "Offered",
+                            PricePerHour = 250
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 10,
+                            SkillId = 12,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 10,
+                            SkillId = 13,
+                            Type  = "Offered",
+                            PricePerHour = 300
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 9,
+                            SkillId = 13,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 10,
+                            SkillId = 14,
+                            Type  = "Offered",
+                            PricePerHour = 400
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 8,
+                            SkillId = 14,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 5,
+                            SkillId = 14,
+                            Type  = "Offered",
+                            PricePerHour = 500
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 6,
+                            SkillId = 15,
+                            Type  = "Wanted"
+                        },
+                        new UserSkills()
+                        {
+                            UserId = 9,
+                            SkillId = 15,
+                            Type  = "Wanted"
+                        }
+
+                    });
+                    context.SaveChanges();
+                }
+                if (!context.Provider.Any())
+                {
+                    context.Provider.AddRange(new List<ProviderUser>()
+                    {
+                        new ProviderUser()
+                        {
+                            UserId = 1,
+                            Status = "Approved",
+                            YearsofExp = 2,
+                            ApprovedAt = DateTime.Now.AddDays(3),
+                        },
+                        new ProviderUser()
+                        {
+                            UserId = 2,
+                            Status = "Approved",
+                            YearsofExp = 3,
+                            ApprovedAt = DateTime.Now.AddDays(3)
+
+                        },
+                        new ProviderUser()
+                        {
+                            UserId = 3,
+                            Status = "Pending",
+                            YearsofExp = 4
+                        },
+                        new ProviderUser()
+                        {
+                            UserId = 4,
+                            Status = "Approved",
+                            YearsofExp = 2,
+                            ApprovedAt = DateTime.Now.AddDays(2)
+
+                        },
+                        new ProviderUser()
+                        {
+                            UserId = 5,
+                            Status = "Rejected",
+                            YearsofExp = 4,
+                            ApprovedAt = DateTime.Now.AddDays(1)
+
+                        },
+                        new ProviderUser()
+                        {
+                            UserId = 6,
+                            Status = "Approved",
+                            YearsofExp = 2,
+                            ApprovedAt = DateTime.Now.AddDays(4)
+                        },
+                        new ProviderUser()
+                        {
+                            UserId = 7,
+                            Status = "Approved",
+                            YearsofExp = 3,
+                            ApprovedAt = DateTime.Now.AddDays(5)
+
+                        },
+                        new ProviderUser()
+                        {
+                            UserId = 8,
+                            Status = "Approved",
+                            YearsofExp = 3,
+                            ApprovedAt = DateTime.Now.AddDays(5)
+
+                        },
+                        new ProviderUser()
+                        {
+                            UserId = 10,
+                            Status = "Pending",
+                            YearsofExp = 3
+                        }
+                    });
+                    context.SaveChanges();
+                }
+
+                if (!context.Documents.Any())
+                {
+                    context.Documents.AddRange(new List<ProviderDocuments>()
+                    {
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 1,
+                            Name = "Microsoft C# Certificate",
+                            DocType = "Certifiacate",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 1,
+                            Name = "MSSQL Certificate",
+                            DocType = "Certifiacate",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now
+
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 2,
+                            Name = "Portfolio",
+                            DocType = "Project File",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(3)
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 3,
+                            Name = "Portfolio",
+                            DocType = "Project File",
+                            //DocUrl = ,
+                            Status = "Pending",
+                            UploadDate = DateTime.Now.AddDays(4)
+
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 4,
+                            Name = "UI & UX Project",
+                            DocType = "Figma File",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(4)
+
+
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 4,
+                            Name = "Adobe Illustrator",
+                            DocType = "Logo",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(6)
+
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 4,
+                            Name = "Adobe Photoshop",
+                            DocType = "Images",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(2)
+
+
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 5,
+                            Name = "English Documents",
+                            DocType = "English PDF File",
+                            //DocUrl = ,
+                            Status = "Rejcted",
+                            UploadDate = DateTime.Now.AddDays(1)
+
+
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 5,
+                            Name = "NASM Personal Trainer Certification",
+                            DocType = "Certificate",
+                            //DocUrl = ,
+                            Status = "Rejcted",
+                            UploadDate = DateTime.Now.AddDays(1)
+
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 6,
+                            Name = "BA",
+                            DocType = "Certificate",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(3)
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 7,
+                            Name = "PMP",
+                            DocType = "Certificate",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(2)
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 7,
+                            Name = "Foudational/Career Certificates",
+                            DocType = "Certificate",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(2)
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 7,
+                            Name = "Bachelor in Arts and Music",
+                            DocType = "Certificate",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(2)
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 8,
+                            Name = "Entrepreneurship Certificate",
+                            DocType = "Certificate",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(3)
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 10,
+                            Name = "Images/ CV",
+                            DocType = "Documents",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(4)
+                        },
+                        new ProviderDocuments()
+                        {
+                            ProviderId = 10,
+                            Name = "(ISSA) International Sports Science Association",
+                            DocType = "Certificate",
+                            //DocUrl = ,
+                            Status = "Approved",
+                            UploadDate = DateTime.Now.AddDays(4)
+                        }
+                    });
+                    context.SaveChanges();
+                }
+
+                if (!context.Availabilities.Any())
+                {
+                    context.Availabilities.AddRange(new List<Availability>()
+                    {
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(18,0,0),//6pm
+                            EndTime = new TimeSpan(20,0,0),
+                            ProviderId = 1,
+                            DayOfWeek = DayOfWeek.Sunday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(15,0,0),
+                            EndTime = new TimeSpan(17,0,0),
+                            ProviderId = 1,
+                            DayOfWeek = DayOfWeek.Monday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(19,0,0),
+                            EndTime = new TimeSpan(21,0,0),
+                            ProviderId = 2,
+                            DayOfWeek = DayOfWeek.Tuesday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(19,0,0),
+                            EndTime = new TimeSpan(21,0,0),
+                            ProviderId = 2,
+                            DayOfWeek = DayOfWeek.Saturday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(12,30,0),
+                            EndTime = new TimeSpan(14,30,0),
+                            ProviderId = 3,
+                            DayOfWeek = DayOfWeek.Saturday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(17,0,0),
+                            EndTime = new TimeSpan(19,0,0),
+                            ProviderId = 4,
+                            DayOfWeek = DayOfWeek.Sunday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(19,30,0),
+                            EndTime = new TimeSpan(21,30,0),
+                            ProviderId = 4,
+                            DayOfWeek = DayOfWeek.Tuesday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(13,0,0),
+                            EndTime = new TimeSpan(15,0,0),
+                            ProviderId = 6,
+                            DayOfWeek = DayOfWeek.Wednesday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(16,30,0),
+                            EndTime = new TimeSpan(18,30,0),
+                            ProviderId = 7,
+                            DayOfWeek = DayOfWeek.Friday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(17,0,0),
+                            EndTime = new TimeSpan(19,0,0),
+                            ProviderId = 7,
+                            DayOfWeek = DayOfWeek.Thursday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(11,0,0),
+                            EndTime = new TimeSpan(13,0,0),
+                            ProviderId = 7,
+                            DayOfWeek = DayOfWeek.Saturday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(12,30,0),
+                            EndTime = new TimeSpan(2,30,0),
+                            ProviderId = 8,
+                            DayOfWeek = DayOfWeek.Friday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(12,30,0),
+                            EndTime = new TimeSpan(2,30,0),
+                            ProviderId = 10,
+                            DayOfWeek = DayOfWeek.Monday
+                        },
+                        new Availability()
+                        {
+                            StartTime = new TimeSpan(12,30,0),
+                            EndTime = new TimeSpan(2,30,0),
+                            ProviderId = 10,
+                            DayOfWeek = DayOfWeek.Thursday
+                        }
+                    });
+                    context.SaveChanges();
+                }
+            }
+        }
+    }
+}
